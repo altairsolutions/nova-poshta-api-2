@@ -305,13 +305,15 @@ class NovaPoshtaApi2 {
 	 * Get cities of company NovaPoshta
 	 * 
 	 * @param int $page Num of page
+	 * @param null $limit
 	 * @param string $findByString Find city by russian or ukrainian word
 	 * @param string $ref ID of city
 	 * @return mixed
 	 */
-	function getCities($page = 0, $findByString = '', $ref = '') {
+	function getCities($page = 0, $limit = null, $findByString = '', $ref = '') {
 		return $this->request('Address', 'getCities', array(
 			'Page' => $page,
+			'Limit' => $limit,
 			'FindByString' => $findByString,
 			'Ref' => $ref,
 		));
@@ -321,13 +323,15 @@ class NovaPoshtaApi2 {
 	 * Get warehouses by city
 	 * 
 	 * @param string $cityRef ID of city
-	 * @param int $page
+	 * @param int|null $page
+	 * @param int|null $limit
 	 * @return mixed
 	 */
-	function getWarehouses($cityRef, $page = 0) {
+	function getWarehouses($cityRef, $page = null, $limit = null) {
 		return $this->request('Address', 'getWarehouses', array(
 			'CityRef' => $cityRef,
 			'Page' => $page,
+			'Limit' => $limit,
 		));
 	}
 	
